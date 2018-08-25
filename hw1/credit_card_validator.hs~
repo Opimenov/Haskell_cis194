@@ -1,0 +1,22 @@
+import Data.List
+
+getNums :: Integral a => a -> t -> [a]
+getNums n x
+  | n == 0 = []
+  | otherwise =(n `mod` 10) :  getNums (n `quot` 10) x
+
+
+toDigitsRev :: Integral a => a -> [a]
+toDigitsRev x
+  | x <= 0    = []
+  | otherwise = getNums x []
+
+  
+toDigits :: Integral a => a -> [a]
+toDigits x = reverse $ toDigitsRev x
+
+addIndecies :: [a] -> [(a, Int)]
+addIndecies x = zip x $ reverse $ [1..(length x)]
+
+--doubleEveryOther :: Integral a => [a] -> [a]
+--doubleEveryOther xs = [ x*2 | x <-  ]
